@@ -1,0 +1,15 @@
+﻿# 1. Eclipse
+.settings/
+
+
+# 2. log
+logs/
+*.log
+
+# 4. Compiled class file
+*.class
+bin/
+target
+
+
+
