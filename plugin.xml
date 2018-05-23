@@ -27,11 +27,27 @@
             name="jfcs">
          <property
                name="windowImages"
-               value="icons/eclipse16.png,icons/eclipse32.png,icons/eclipse48.png,icons/eclipse64.png, icons/eclipse128.png,icons/eclipse256.png,icons/eclipse512.png">
+               value="icons/jfcs.gif,icons/eclipse32.png,icons/eclipse48.png,icons/eclipse64.png, icons/eclipse128.png,icons/eclipse256.png">
+         </property>
+         <property
+               name="appName"
+               value="jfcs">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="00FF80">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="6,260,200,16">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="1,279,443,15">
          </property>
          <property
                name="preferenceCustomization"
-               value="AppPref.ini">
+               value="plugin_customization.ini">
          </property>
       </product>
    </extension>

@@ -96,8 +96,7 @@ public class HookSysTray {
 			return null;
 		trayItem = new TrayItem(tray, SWT.NONE);
 		trayItem.setImage(CacheImage.getINSTANCE().getImage( IAppConstants.APPLICATION_ID, IImageKey.WINDOW_IMAGE));
-		//Image trayImage=AbstractUIPlugin.imageDescriptorFromPlugin(IAppConstants.APPLICATION_ID,IImageKey.WINDOW_IMAGE).createImage();
-		//trayItem.setImage(trayImage);
+		
 		
 		// 定时显示气泡提示文本
 		Timer timer = new Timer();
@@ -115,7 +114,7 @@ public class HookSysTray {
 					}
 				});
 			}
-		}, 0, 30 * 60 * 1000);
+		}, 0, 30* 60 * 1000);
 		return trayItem;
 	}
 
