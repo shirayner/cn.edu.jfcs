@@ -55,6 +55,7 @@
          point="org.eclipse.ui.intro">
       <intro
             class="org.eclipse.ui.intro.config.CustomizableIntroPart"
+            icon="content/welcomeicon.gif"
             id="cn.edu.jfcs.intro">
       </intro>
       <introProductBinding

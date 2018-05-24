@@ -64,6 +64,7 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		welcomeAction = ActionFactory.INTRO.create(window);
 		welcomeAction.setText("欢迎使用");
 		welcomeAction.setAccelerator(SWT.ALT + 87); // 设置快捷键为ALT+W
+		welcomeAction.setToolTipText("欢迎使用");
 		IntroMessages.Intro_default_title = "经费测算，开源节流";
 		register(welcomeAction);
 
