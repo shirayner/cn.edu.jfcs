@@ -1,14 +1,12 @@
 package cn.edu.jfcs.app;
 
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
-import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
-import cn.edu.jfcs.ui.LoginDialog;
+import cn.edu.jfcs.sys.Login;
 
 /**
  * This class controls all aspects of the application's execution
@@ -23,8 +21,8 @@ public class Application implements IApplication {
 			context.applicationRunning();
 			
 			//2. open the login dialog
-			LoginDialog login = new LoginDialog(null);
-			if (login.open() != Window.OK) {
+			Login login = new Login();
+			if (!login.isLogin()) {
 				return IApplication.EXIT_OK;
 			}
 			

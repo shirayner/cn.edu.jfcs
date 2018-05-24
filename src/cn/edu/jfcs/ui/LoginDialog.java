@@ -13,6 +13,7 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import cn.edu.jfcs.model.SaveLogInfo;
 import cn.edu.jfcs.sys.CacheImage;
 import cn.edu.jfcs.sys.IAppConstants;
 import cn.edu.jfcs.sys.IImageKey;
@@ -31,7 +32,6 @@ public class LoginDialog extends Dialog {
 	}
 
 	// 创建对话框的内容
-	@Override
 	protected Control createDialogArea(Composite parent) {
 		Composite container = (Composite) super.createDialogArea(parent);
 		final GridLayout gridLayout = new GridLayout();
@@ -55,18 +55,17 @@ public class LoginDialog extends Dialog {
 		passwordText.setEchoChar('*');
 		passwordText.setLayoutData(new GridData(GridData.FILL, GridData.CENTER,
 				true, false));
+
 		return container;
 	}
 
 	// 创建对话框按钮
-	@Override
 	protected void createButtonsForButtonBar(final Composite parent) {
 		createButton(parent, IDialogConstants.OK_ID, "登录", true);
 		createButton(parent, IDialogConstants.CANCEL_ID, "退出", false);
 	}
 
 	// 检查用户输入是否为空
-	@Override
 	protected void okPressed() {
 		String username = usernameText.getText().trim();
 		String password = passwordText.getText().trim();
@@ -87,32 +86,32 @@ public class LoginDialog extends Dialog {
 			passwordText.setFocus();
 			return;
 		}
-		//SaveLogInfo.getInstance().setUsername(username);
-		//SaveLogInfo.getInstance().setPassword(password);
+		SaveLogInfo.getInstance().setUsername(username);
+		SaveLogInfo.getInstance().setPassword(password);
 		super.okPressed();
 	}
 
-	@Override
 	public boolean close() {
 		return super.close();
 	}
 
 	// 设置对话框初始大小
-	@Override
 	protected Point getInitialSize() {
 		return new Point(230, 150);
 	}
 
 	// 设置对话框窗口标题和图标
-	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("用户身份验证");
 		newShell.setImage(CacheImage.getINSTANCE().getImage(
 				IAppConstants.APPLICATION_ID, IImageKey.WINDOW_IMAGE));
 	}
-	
+
 	public boolean getLoginSucess() {
 		return loginSucess;
 	}
+	
+	
+	
 }
