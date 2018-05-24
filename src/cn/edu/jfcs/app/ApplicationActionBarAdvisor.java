@@ -28,6 +28,8 @@ import cn.edu.jfcs.actions.RemoteDataSRConfig;
 import cn.edu.jfcs.actions.TeachUnitData;
 import cn.edu.jfcs.actions.Update;
 import cn.edu.jfcs.actions.UserManag;
+import cn.edu.jfcs.model.SaveLogInfo;
+import cn.edu.jfcs.sys.StatusBarContribution;
 
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 
@@ -50,6 +52,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 	// 工具栏：用户注销、在线升级
 	private Action logoff, update;
 
+	// 状态栏Contribution对象
+	private StatusBarContribution statusBarContribution;
 
 	public ApplicationActionBarAdvisor(IActionBarConfigurer configurer) {
 		super(configurer);
@@ -91,6 +95,15 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		register(logoff);
 		update = new Update();
 		register(update);
+
+		// 配置状态栏
+		String msg = "登录用户：" + SaveLogInfo.getInstance().getUsername();
+		String usertag = SaveLogInfo.getInstance().getUsertag();
+		usertag = usertag.equals("0") ? "普通用户" : (usertag.equals("1") ? "教务处"
+				: "管理员");
+		msg += "\t\t身份：" + usertag;
+		statusBarContribution = new StatusBarContribution(msg);
+		statusBarContribution.setVisible(true);
 
 	}
 
@@ -139,4 +152,8 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
 		toolBar.add(helpInfo);
 	}
 
+	//设置状态栏
+	protected void fillStatusLine(IStatusLineManager statusLine) {
+		statusLine.add(statusBarContribution);
+	}
 }

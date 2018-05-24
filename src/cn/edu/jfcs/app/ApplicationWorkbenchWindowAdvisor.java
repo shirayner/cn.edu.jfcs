@@ -2,6 +2,7 @@ package cn.edu.jfcs.app;
 
 
 
+import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
@@ -12,8 +13,10 @@ import org.eclipse.ui.application.IActionBarConfigurer;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
+import cn.edu.jfcs.sys.CacheImage;
 import cn.edu.jfcs.sys.HookSysTray;
 import cn.edu.jfcs.sys.IAppConstants;
+import cn.edu.jfcs.sys.IImageKey;
 
 public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 
@@ -36,7 +39,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		configurer.setShowCoolBar(true);
 
 		//3.显示状态栏
-		configurer.setShowStatusLine(false);
+		configurer.setShowStatusLine(true);
 
 		//4.窗口只显示最小化、关闭按钮
 		configurer.setShellStyle(SWT.MIN | SWT.CLOSE);
@@ -64,8 +67,13 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 
 		//2.创建系统托盘
 		createSystemTray();
-		
-		
+
+		//3.设置状态栏临时信息
+		IStatusLineManager statusline = getWindowConfigurer().getActionBarConfigurer().getStatusLineManager();
+		statusline.setMessage(CacheImage.getINSTANCE().getImage(
+				IAppConstants.APPLICATION_ID, IImageKey.AUTHOR),
+				"Powered by ray");
+
 	}
 
 
